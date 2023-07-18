@@ -1,4 +1,5 @@
 # importing the required libraries
+import pygame
 import pygame as pg
 import sys
 import time
@@ -62,7 +63,6 @@ initiating_window = pg.transform.scale(
     initiating_window, (width, height + 100))
 x_img = pg.transform.scale(x_img, (80, 80))
 o_img = pg.transform.scale(y_img, (80, 80))
-
 
 def game_initiating_window():
     # displaying over the screen
@@ -248,14 +248,15 @@ def reset_game():
 
 game_initiating_window()
 
-while (True):
-    for event in pg.event.get():
+while True:
+    ev = pygame.event.get()
+    for event in ev:
         if event.type == QUIT:
             pg.quit()
             sys.exit()
-        elif event.type is MOUSEBUTTONDOWN:
+        elif event.type == pygame.MOUSEBUTTONUP:
             user_click()
-            if (winner or draw):
+            if winner or draw:
                 reset_game()
     pg.display.update()
     CLOCK.tick(fps)
