@@ -286,11 +286,5 @@ def update_record():
     return jsonify(record)
 
 
-def runApp():
-    app.run()
-
-
-t1 = threading.Thread(target=runApp)
-t2 = threading.Thread(target=runGame)
-t1.start()
-t2.start()
+app.run()
+# runGame()
